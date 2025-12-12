@@ -1,0 +1,236 @@
+/* --- Global Variables (PERMANENT DARK MODE) --- */
+:root {
+    --primary-color: #5BC0DE; /* Lighter blue accent */
+    --secondary-color: #3B71CA; 
+    --bg-main: #121212;
+    --bg-section: #1e1e1e;
+    --bg-card: #2c2c2c;
+    --bg-header-footer: #0a0a0a;
+    --text-color: #e0e0e0; 
+    --text-light: #121212;
+    --border-color: #3d3d3d;
+    --shadow-color: rgba(255, 255, 255, 0.05);
+    --font-family: 'Arial', sans-serif;
+}
+
+/* --- Base Reset & General Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-main);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* --- 1. Header & Navigation (Desktop Default) --- */
+header {
+    background-color: var(--bg-card); 
+    box-shadow: 0 2px 4px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo h1 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+}
+
+.logo {
+    display: flex;       /* Ensures the placeholder and h1 are side-by-side */
+    align-items: center; /* Vertically centers the items */
+    gap: 8px;            /* Adds a small space between the icon and the word */
+}
+
+.logo-placeholder {
+    width: 30px;        /* Standard size for a small logo/icon */
+    height: 30px;
+    background-color: var(--primary-color); /* Use the primary color for visibility */
+    border-radius: 50%; /* Optional: Makes it a circle placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none; /* FIX: Ensures no circles/bullets */
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Replaces margin-left for cleaner spacing */
+}
+
+nav ul li a {
+    color: var(--text-color);
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.contact-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light) !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    /* desktop buttons are fine here */
+}
+
+/* --- 2. HERO SECTION (Desktop Default) --- */
+.hero-section {
+    background: var(--bg-section);
+    padding: 100px 20px;
+    text-align: left;
+    display: flex; /* Desktop layout is horizontal */
+    align-items: center;
+    gap: 60px;
+    border-radius: 0 0 15px 15px;
+}
+
+.hero-content {
+    flex: 1;
+}
+.hero-image {
+    flex: 1; /* Allows image placeholder to take up space */
+    min-height: 350px;
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.cta-buttons {
+    display: flex; 
+    gap: 15px; /* Ensures space between buttons */
+    margin-top: 20px; /* Add some space below the text */
+}
+.cta-buttons a {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px; 
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* --- Sections (3, 4, 5, 6) Desktop Defaults --- */
+section {
+    padding: 80px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Ensure all sections are visible by default */
+    display: block; 
+}
+
+.steps-container, .value-cards {
+    display: flex; /* Horizontal on desktop */
+    justify-content: space-around;
+    gap: 30px;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--bg-header-footer);
+    color: #e0e0e0;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* ============================================== */
+/* --- MEDIA QUERIES (MOBILE FIX < 790px) --- */
+/* ============================================== */
+@media (max-width: 790px) {
+    
+    /* FIX 1: Navigation stacking and hiding unnecessary content */
+    nav {
+        flex-direction: column;
+        padding: 15px 10px;
+    }
+    nav ul {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* FIX 2: Hero Section (The only thing visible) */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+        /* Ensure the hero section takes full width/focus */
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-image {
+        /* Hide the image/placeholder completely */
+        display: none; 
+    }
+    
+    .hero-section h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .hero-section p {
+        /* Hide sub-headline on very small screens for better focus */
+        display: none; 
+    }
+
+    /* FIX 3: Buttons (MUST be fixed) */
+    .cta-buttons {
+        flex-direction: row; /* Stack buttons vertically */
+        align-items: center;
+        gap: 10px;
+        width: 100%; /* Use full width container */
+    }
+    .cta-buttons a {
+        display: block; /* Force buttons to take full available width */
+        width: 90%; 
+        margin: 0; /* Remove horizontal margin */
+    }
+
+    .steps-container, 
+    .value-cards {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .step, .card {
+        margin-bottom: 0; /* Clear previous margin */
+        max-width: 100%;
+    }
+    
+    /* Footer may need re-enabling if it was specifically hidden */
+    footer {
+        display: block;
+    }
+}
